@@ -9,11 +9,13 @@
 <%
    String varisbn = request.getParameter("isbn");
    String  vartitulo = request.getParameter("titulo");
+   String varautor = request.getParameter("autor");
    String varchecked = request.getParameter("checked");
    String actualizar="actualizar";
    if(varisbn==null&&vartitulo==null&&varchecked==null){
       varisbn="";
       vartitulo="";
+      varautor="";
       varchecked="";
    }
 %>
@@ -27,7 +29,9 @@
   </tr>
  <tr>
  <td>Titulo<input type="text" name="titulo" value="<%=vartitulo%>" size="50"/></td>
- 
+ </tr>
+ <tr>
+ <td>Autor<input type="text" name="autor" value="<%=varautor%>" size="40"/></td>
  </tr>
  <tr><td> Action 
  <%if(varchecked.equals(actualizar)){
@@ -80,22 +84,24 @@ out.write("OK");
       // Ponemos los resultados en un table de html
       out.println("<table border=\"1\">");
       %>
-         <tr><td>Num.</td><td>ISBN</td> <td><a href=""> Titulo</a></td><td>Accion</td></tr>
+         <tr><td>Num.</td><td>ISBN</td><td><a href=""> Titulo</a></td><td>Autor</td><td>Accion</td></tr>
       <%
       int i=1;
-      String isbn ="",titulo ="",site= ""+request.getRequestURL();
+      String isbn ="", titulo ="", autor= "", site= ""+request.getRequestURL();
 
       while (rs.next())
       {
          isbn=rs.getString("isbn");
          titulo=rs.getString("titulo");
+         autor=rs.getString("autor");
          %>
          <tr>
          <td> <%=i%> </td>
          <td><%=isbn%></td>
          <td><%=titulo%></td>
+         <td><%=autor%></td>
          <!--EJERCICIO 4-->
-         <td><a href="<%=site%>?isbn=<%=isbn%>&titulo=<%=titulo%>&checked=<%=actualizar%>">Actualizar</a><br>Eliminar</td>
+         <td><a href="<%=site%>?isbn=<%=isbn%>&titulo=<%=titulo%>&autor=<%=autor%>&checked=<%=actualizar%>">Actualizar</a><br>Eliminar</td>
          </tr>
          <%
          i++;
