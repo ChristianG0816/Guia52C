@@ -168,7 +168,10 @@ Connection conexion = getConnection(path);
          <td><%=anio%></td>
          
          <!--EJERCICIO 4-->
-         <td><a href="<%=site%>?isbn=<%=isbn%>&titulo=<%=titulo%>&autor=<%=autor%>&editorial=<%=editorial%>&anio=<%=anio%>&checked=<%=actualizar%>">Actualizar</a><br>Eliminar</td>
+         <td><a href="<%=site%>?isbn=<%=isbn%>&titulo=<%=titulo%>&autor=<%=autor%>&editorial=<%=editorial%>&anio=<%=anio%>&checked=<%=actualizar%>">Actualizar</a>
+            <br>
+            <a href="eliminar.jsp?isbn=<%=isbn%>">Eliminar</a></td>
+        </td>
          </tr>
          <%
          i++;
