@@ -34,6 +34,7 @@ System.out.println("Error: " + e);
    String varanio = request.getParameter("anio");
    String varchecked = request.getParameter("checked");
    String varTitulo= request.getParameter("Titulo");
+   String varAutor= request.getParameter("Autor");
    String varBuscar = request.getParameter("buscar");
    String actualizar="actualizar";
    //Estos dos son de ordenar
@@ -122,7 +123,8 @@ System.out.println("Error: " + e);
 
 <!-- Formulario -- Ejercicio 3 -->
 <form name="formbusca" action="libros.jsp" method="get">
-Titulo a buscar <input type ="text" name="Titulo" placeholder = "Ingrese un Titulo"/>
+Titulo a buscar <input type ="text" name="Titulo" placeholder = "Ingrese un Titulo" required name ="Titulo"/>
+Autor a buscar <input type ="text" name="Autor" placeholder="Ingrese un autor" required name ="Autor"/>
 <input type="submit" name="buscar" value="BUSCAR"/>
 <br><br>
 
@@ -139,7 +141,7 @@ Connection conexion = getConnection(path);
       b = " order by titulo desc";
       }
       if(varBuscar != null){
-          sentencia = "SELECT * FROM libros where titulo = " + "'" + varTitulo + "'" + b;
+        sentencia = "SELECT * FROM libros where titulo = " + "'" + varTitulo + "'" +" OR autor = "  + "'" + varAutor + "'" + b;
       }else{
         sentencia = "select * from libros"+ b;
       }
