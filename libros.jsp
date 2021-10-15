@@ -5,6 +5,26 @@
  <title>Actualizar, Eliminar, Crear registros.</title>
  </head>
  <body>
+<!--  LOGICA DE CONEXIÓN CON LA BASE DE DATOS -->
+<%!
+public Connection getConnection(String path) throws SQLException {
+String driver = "sun.jdbc.odbc.JdbcOdbcDriver";
+String filePath= path+"\\datos.mdb";
+String userName="",password="";
+String fullConnectionString = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + filePath;
+
+    Connection conn = null;
+try{
+        Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+ conn = DriverManager.getConnection(fullConnectionString,userName,password);
+
+}
+ catch (Exception e) {
+System.out.println("Error: " + e);
+ }
+    return conn;
+}
+%>
 <!--  LOGICA DE ACTUALIZAR -->
 <%
    String varisbn = request.getParameter("isbn");
@@ -40,14 +60,43 @@
  <tr>
  <td>Autor<input type="text" name="autor" value="<%=varautor%>" size="40"/></td>
  </tr>
- <tr>
- <td>Editorial<select type="text" name="editorial"/>
-    <option><%=vareditorial%></option>
- </td>
- </tr>
+ <!-- INICIO EJERCICIO 7 -->
+ <tr><td>Editorial
+    <select type="text" name="editorial"/>
+        <%
+        ServletContext context1 = request.getServletContext();
+        String path1 = context1.getRealPath("/data");
+        Connection conexion1 = getConnection(path1);
+            if (!conexion1.isClosed()){
+                String a="";
+                if(va==null){
+                    a = " order by editorial asc";
+                }else{
+                    a = " order by editorial desc";
+                }
+                String sentencia1 = "select * from editorial"+a;
+                Statement st1 = conexion1.createStatement();
+                ResultSet rs1 = st1.executeQuery(sentencia1);
+                // Ponemos los resultados en un select de html
+                int i=1;
+                while (rs1.next()){
+                    vareditorial=rs1.getString("editorial");
+                    out.println("<option>");
+                    %>
+                    <%=vareditorial%>
+                    <%
+                    i++;
+                }
+                out.println("</option>");
+              // cierre de la conexion1
+              conexion1.close();
+            }
+        %>
+ </td></tr>
  <tr>
  <td>Año de publicación<input type="text" name="anio" value="<%=varanio%>"/></td>
  </tr>
+ <!-- FIN EJERCICIO 7 -->
  <tr><td> Action 
  <%if(varchecked.equals(actualizar)){
     %>
@@ -68,31 +117,11 @@
  </table>
  </form>
 <br><br>
-<%!
-public Connection getConnection(String path) throws SQLException {
-String driver = "sun.jdbc.odbc.JdbcOdbcDriver";
-String filePath= path+"\\datos.mdb";
-String userName="",password="";
-String fullConnectionString = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + filePath;
-
-    Connection conn = null;
-try{
-        Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
- conn = DriverManager.getConnection(fullConnectionString,userName,password);
-
-}
- catch (Exception e) {
-System.out.println("Error: " + e);
- }
-    return conn;
-}
-%>
 <%
 ServletContext context = request.getServletContext();
 String path = context.getRealPath("/data");
 Connection conexion = getConnection(path);
    if (!conexion.isClosed()){
-out.write("OK");
       String isbn ="", titulo ="", autor= "",editorial= "",anio= "", site= ""+request.getRequestURL(), b="";
       if(va==null){
       b = " order by titulo asc";
