@@ -94,7 +94,7 @@ System.out.println("Error: " + e);
         %>
  </td></tr>
  <tr>
- <td>Año de publicación<input type="number" name="anio" value="<%=varanio%>"/></td>
+ <td>Año de publicación<input type="date" name="anio" value="<%=varanio%>"/></td>
  </tr>
  <!-- FIN EJERCICIO 7 -->
  <tr><td> Action 
