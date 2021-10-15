@@ -8,8 +8,10 @@
 <!--  LOGICA DE ACTUALIZAR -->
 <%
    String varisbn = request.getParameter("isbn");
-   String  vartitulo = request.getParameter("titulo");
+   String vartitulo = request.getParameter("titulo");
    String varautor = request.getParameter("autor");
+   String vareditorial = request.getParameter("editorial");
+   String varanio = request.getParameter("anio");
    String varchecked = request.getParameter("checked");
    String actualizar="actualizar";
    //Estos dos son de ordenar
@@ -19,6 +21,8 @@
       varisbn="";
       vartitulo="";
       varautor="";
+      vareditorial="";
+      varanio="";
       varchecked="";
    }
 %>
@@ -35,6 +39,14 @@
  </tr>
  <tr>
  <td>Autor<input type="text" name="autor" value="<%=varautor%>" size="40"/></td>
+ </tr>
+ <tr>
+ <td>Editorial<select type="text" name="editorial"/>
+    <option><%=vareditorial%></option>
+ </td>
+ </tr>
+ <tr>
+ <td>Año de publicación<input type="text" name="anio" value="<%=varanio%>"/></td>
  </tr>
  <tr><td> Action 
  <%if(varchecked.equals(actualizar)){
@@ -81,7 +93,7 @@ String path = context.getRealPath("/data");
 Connection conexion = getConnection(path);
    if (!conexion.isClosed()){
 out.write("OK");
-      String isbn ="", titulo ="", autor= "", site= ""+request.getRequestURL(), b="";
+      String isbn ="", titulo ="", autor= "",editorial= "",anio= "", site= ""+request.getRequestURL(), b="";
       if(va==null){
       b = " order by titulo asc";
       }
@@ -94,7 +106,7 @@ out.write("OK");
       // Ponemos los resultados en un table de html
       out.println("<table border=\"1\">");
       %>
-         <tr><td>Num.</td><td>ISBN</td><td><a href="<%=site%>?var=<%=var%>"> Titulo</a></td><td>Autor</td><td>Accion</td></tr>
+         <tr><td>Num.</td><td>ISBN</td><td><a href="<%=site%>?var=<%=var%>"> Titulo</a></td><td>Autor</td><td>Editorial</td><td>Año Publicación</td><td>Accion</td></tr>
       <%
       int i=1;
       while (rs.next())
@@ -102,14 +114,19 @@ out.write("OK");
          isbn=rs.getString("isbn");
          titulo=rs.getString("titulo");
          autor=rs.getString("autor");
+         editorial=rs.getString("editorial");
+         anio=rs.getString("anio");
          %>
          <tr>
          <td> <%=i%> </td>
          <td><%=isbn%></td>
          <td><%=titulo%></td>
          <td><%=autor%></td>
+         <td><%=editorial%></td>
+         <td><%=anio%></td>
+         
          <!--EJERCICIO 4-->
-         <td><a href="<%=site%>?isbn=<%=isbn%>&titulo=<%=titulo%>&autor=<%=autor%>&checked=<%=actualizar%>">Actualizar</a><br>Eliminar</td>
+         <td><a href="<%=site%>?isbn=<%=isbn%>&titulo=<%=titulo%>&autor=<%=autor%>&editorial=<%=editorial%>&anio=<%=anio%>&checked=<%=actualizar%>">Actualizar</a><br>Eliminar</td>
          </tr>
          <%
          i++;
