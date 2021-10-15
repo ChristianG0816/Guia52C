@@ -11,6 +11,9 @@
    String  vartitulo = request.getParameter("titulo");
    String varchecked = request.getParameter("checked");
    String actualizar="actualizar";
+   //Estos dos son de ordenar
+   String va = request.getParameter("var");
+   String var = "1";
    if(varisbn==null&&vartitulo==null&&varchecked==null){
       varisbn="";
       vartitulo="";
@@ -74,17 +77,22 @@ String path = context.getRealPath("/data");
 Connection conexion = getConnection(path);
    if (!conexion.isClosed()){
 out.write("OK");
- 
+      String isbn ="", titulo ="", autor= "", site= ""+request.getRequestURL(), b="";
+      if(va==null){
+      b = " order by titulo asc";
+      }
+      else{
+      b = " order by titulo desc";
+      }
+      String sentencia = "select * from libros"+ b;
       Statement st = conexion.createStatement();
-      ResultSet rs = st.executeQuery("select * from libros" );
+      ResultSet rs = st.executeQuery(sentencia);
       // Ponemos los resultados en un table de html
       out.println("<table border=\"1\">");
       %>
-         <tr><td>Num.</td><td>ISBN</td> <td><a href=""> Titulo</a></td><td>Accion</td></tr>
+         <tr><td>Num.</td><td>ISBN</td><td><a href="<%=site%>?var=<%=var%>"> Titulo</a></td><td>Autor</td><td>Accion</td></tr>
       <%
       int i=1;
-      String isbn ="",titulo ="",site= ""+request.getRequestURL();
-
       while (rs.next())
       {
          isbn=rs.getString("isbn");
