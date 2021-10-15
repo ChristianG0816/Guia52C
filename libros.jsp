@@ -182,5 +182,5 @@ Connection conexion = getConnection(path);
       conexion.close();
 }
 %>
-    <a href=”listado-xml.jsp” download=”libros.csv”>Descargar Listado XML</a>
+    <a href="listado-xml.xml" download="libros.xml">Descargar Listado XML</a>
  </body>
