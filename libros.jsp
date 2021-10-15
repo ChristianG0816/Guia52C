@@ -5,7 +5,7 @@
  <title>Actualizar, Eliminar, Crear registros.</title>
  </head>
  <body>
-<!--  LOGICA DE CONEXIÓN CON LA BASE DE DATOS -->
+<!--  LOGICA DE CONEXIï¿½N CON LA BASE DE DATOS -->
 <%!
 public Connection getConnection(String path) throws SQLException {
 String driver = "sun.jdbc.odbc.JdbcOdbcDriver";
@@ -33,6 +33,8 @@ System.out.println("Error: " + e);
    String vareditorial = request.getParameter("editorial");
    String varanio = request.getParameter("anio");
    String varchecked = request.getParameter("checked");
+   String varTitulo= request.getParameter("Titulo");
+   String varBuscar = request.getParameter("buscar");
    String actualizar="actualizar";
    //Estos dos son de ordenar
    String va = request.getParameter("var");
@@ -94,7 +96,7 @@ System.out.println("Error: " + e);
         %>
  </td></tr>
  <tr>
- <td>Año de publicación<input type="date" name="anio" value="<%=varanio%>"/></td>
+ <td>Aï¿½o de publicaciï¿½n<input type="date" name="anio" value="<%=varanio%>"/></td>
  </tr>
  <!-- FIN EJERCICIO 7 -->
  <tr><td> Action 
@@ -117,25 +119,36 @@ System.out.println("Error: " + e);
  </table>
  </form>
 <br><br>
+
+<!-- Formulario -- Ejercicio 3 -->
+<form name="formbusca" action="libros.jsp" method="get">
+Titulo a buscar <input type ="text" name="Titulo" placeholder = "Ingrese un Titulo"/>
+<input type="submit" name="buscar" value="BUSCAR"/>
+<br><br>
+
 <%
 ServletContext context = request.getServletContext();
 String path = context.getRealPath("/data");
 Connection conexion = getConnection(path);
    if (!conexion.isClosed()){
-      String isbn ="", titulo ="", autor= "",editorial= "",anio= "", site= ""+request.getRequestURL(), b="";
+      String isbn ="", titulo ="", autor= "",editorial= "",anio= "", site= ""+request.getRequestURL(), b="", sentencia="";
       if(va==null){
       b = " order by titulo asc";
       }
       else{
       b = " order by titulo desc";
       }
-      String sentencia = "select * from libros"+ b;
+      if(varBuscar != null){
+          sentencia = "SELECT * FROM libros where titulo = " + "'" + varTitulo + "'" + b;
+      }else{
+        sentencia = "select * from libros"+ b;
+      }
       Statement st = conexion.createStatement();
       ResultSet rs = st.executeQuery(sentencia);
       // Ponemos los resultados en un table de html
       out.println("<table border=\"1\">");
       %>
-         <tr><td>Num.</td><td>ISBN</td><td><a href="<%=site%>?var=<%=var%>"> Titulo</a></td><td>Autor</td><td>Editorial</td><td>Año Publicación</td><td>Accion</td></tr>
+         <tr><td>Num.</td><td>ISBN</td><td><a href="<%=site%>?var=<%=var%>"> Titulo</a></td><td>Autor</td><td>Editorial</td><td>Aï¿½o Publicaciï¿½n</td><td>Accion</td></tr>
       <%
       int i=1;
       while (rs.next())
