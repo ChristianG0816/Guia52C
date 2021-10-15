@@ -1,16 +1,11 @@
 <%@page import="java.util.*,java.sql.*,net.ucanaccess.jdbc.*"%>
 <%@page contentType="application/xml"%>
 <%
+   response.setStatus(200);
     String nombreArchivo = "libros.xml";
     response.setHeader("Content-Disposition", "attachment; filename=" + nombreArchivo);
 %>
-<!DOCTYPE html>
 
- <html>
- <head>
- <title>Listado CSV</title>
- </head>
- <body>
  <%!
 public Connection getConnection(String path) throws SQLException {
 String driver = "sun.jdbc.odbc.JdbcOdbcDriver";
@@ -30,6 +25,11 @@ System.out.println("Error: " + e);
     return conn;
 }
 %>
+<html>
+<head>
+<title>Actualizar, Eliminar, Crear registros.</title>
+</head>
+<body>
 <%
 ServletContext context = request.getServletContext();
 String path = context.getRealPath("/data");
@@ -42,7 +42,7 @@ Connection conexion = getConnection(path);
       // Ponemos los resultados en un table de html
       out.println("<table border=\"1\">");
       %>
-         <tr><td>Num.</td><td>ISBN</td><td><td>Titulo</td></td><td>Autor</td><td>Editorial</td><td>A�o Publicaci�n</td><td>Accion</td></tr>
+         <tr><td>Num.</td><td>ISBN</td><td>Titulo</td></td><td>Autor</td><td>Editorial</td><td>A�o Publicaci�n</td></tr>
       <%
       int i=1;
       while (rs.next())
@@ -71,4 +71,3 @@ Connection conexion = getConnection(path);
 }
 %>
  </body>
- </html>
