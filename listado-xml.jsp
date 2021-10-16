@@ -2,7 +2,7 @@
 <%@page contentType="application/xml" pageEncoding="utf-8"%>
 <biblioteca>
 <encabezado>
-<tituloP>Actualizar, Eliminar, Crear registros.</tituloP>
+<tituloP>Mantenimiento de Libros.</tituloP>
 </encabezado>
 <libros>
 <%
