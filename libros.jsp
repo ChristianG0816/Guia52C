@@ -127,6 +127,7 @@ Titulo a buscar <input type ="text" name="Titulo" placeholder = "Ingrese un Titu
 Autor a buscar <input type ="text" name="Autor" placeholder="Ingrese un autor" required name ="Autor"/>
 <input type="submit" name="buscar" value="BUSCAR"/>
 <br><br>
+</form>
 
 <%
 ServletContext context = request.getServletContext();
