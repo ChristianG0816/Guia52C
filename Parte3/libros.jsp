@@ -78,11 +78,11 @@ System.out.println("Error: " + e);
         <td><a href="listado-csv.jsp" download="libros.csv" class="btn btn-outline-dark">Listado CSV</a></td>
       </tr>
       <tr>
-        <td><label>Titulo</label><input type="text" name="titulo"  value="<%=vartitulo%>" pattern="[a-zA-Z0-9\s]{0,50}" title="Solo debe ingresar texto y maximo 50 caracteres"/></td>
+        <td><label>Titulo</label><input type="text" name="titulo"  value="<%=vartitulo%>" pattern="[a-zA-Z0-9\,]{0,50}" title="Solo debe ingresar texto y maximo 50 caracteres"/></td>
         <td><a href="listado-txt.jsp" download="libros.txt" class="btn btn-outline-dark">Listado txt</a></td>
       </tr>
       <tr>
-        <td><label>Autor</label><input type="text" name="autor" value="<%=varautor%>" pattern="[a-zA-Z\s]{0,50}" title="Solo debe ingresar texto sin acento y maximo 50 caracteres"/></td>
+        <td><label>Autor</label><input type="text" name="autor" value="<%=varautor%>" pattern="[a-zA-Z\,]{0,50}" title="Solo debe ingresar texto sin acento y maximo 50 caracteres"/></td>
         <td><a href="listado-xml.jsp" download="libros.xml" class="btn btn-outline-dark">Listado XML</a></td>
       </tr>
       <!-- INICIO EJERCICIO 7 -->
@@ -144,8 +144,8 @@ System.out.println("Error: " + e);
   <table class="tBbusqueda">
     <tbody>
       <tr>
-        <td><label>Titulo a buscar</label><input type ="text" name="Titulo" required name ="Titulo" pattern="[a-zA-Z0-9\s]{0,30}" title="Solo debe ingresar texto"/></td>
-        <td><label>Autor a buscar </label><input type ="text" name="Autor" required name ="Autor" pattern="[a-zA-Z\s]{0,30}" title="Solo debe ingresar texto sin acento"/></td>
+        <td><label>Titulo a buscar</label><input type ="text" name="Titulo" required name ="Titulo" pattern="[a-zA-Z0-9\,]{0,30}" title="Solo debe ingresar texto"/></td>
+        <td><label>Autor a buscar </label><input type ="text" name="Autor" required name ="Autor" pattern="[a-zA-Z\,]{0,30}" title="Solo debe ingresar texto sin acento"/></td>
         <td><input type="SUBMIT" name="buscar" value="BUSCAR" class="btn btn-outline-dark"/></td>
       </tr>
     </tbody>
