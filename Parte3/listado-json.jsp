@@ -1,18 +1,9 @@
-<%@page import="java.util.*,java.sql.*,net.ucanaccess.jdbc.*"%>
-<%@page contentType="text/html" pageEncoding="utf-8"%>
-<!DOCTYPE>
-<html>
-<head>
-    <title>LIBROS</title>
-</head>
-<body>
-<%
+<%@page import="java.util.*,java.sql.*,net.ucanaccess.jdbc.*" contentType="application/json" pageEncoding="utf-8"%>{<%
     response.setStatus(200);
     //response.setContentType("application/json");
-    String nombreArchivo = "libros.html";
+    String nombreArchivo = "libros.json";
     response.setHeader("Content-Disposition", "attachment; filename=" + nombreArchivo);
-%>
-<%!
+%><%!
     public Connection getConnection(String path) throws SQLException {
     String driver = "sun.jdbc.odbc.JdbcOdbcDriver";
     String filePath= path+"\\datos.mdb";
@@ -38,10 +29,7 @@
         sentencia = "select * from libros";
         Statement st = conexion.createStatement();
         ResultSet rs = st.executeQuery(sentencia);
-%>
-        <table>
-        <tr><td>Num.</td><td>ISBN</td><td>Titulo</td><td>Autor</td><td>Editorial</td><td>Anio Publicacion</td></tr>
-<%
+
         int i=1;
         while (rs.next())
         {
@@ -51,23 +39,20 @@
             editorial=rs.getString("editorial");
             anio=rs.getString("anio");
             %>
-<tr>
-    <td> <%=i%> </td>
-    <td><%=isbn%></td>
-    <td><%=titulo%></td>
-    <td><%=autor%></td>
-    <td><%=editorial%></td>
-    <td><%=anio%></td>
-</tr>
-            <%
+    "<%=i%>" : {
+        "libro": {
+            "isbn": "<%=isbn%>",
+            "titulo": "<%=titulo%>",
+            "autor": "<%=autor%>",
+            "editorial": "<%=editorial%>",
+            "anio": "<%=anio%>"
+        }
+    },
+<%
             i++;
         }
-            %>
-            </table>
-            <%
         // cierre de la conexion
         conexion.close();
     }
 %>
-</body>
-<html>
+}
