@@ -1,10 +1,10 @@
 <%@page import="java.util.*,java.sql.*,net.ucanaccess.jdbc.*"%>
 <%@page contentType="application/xml" pageEncoding="utf-8"%>
-<html>
-<head>
-<title>Actualizar, Eliminar, Crear registros.</title>
-</head>
-<body>
+<biblioteca>
+<encabezado>
+<titulo>Actualizar, Eliminar, Crear registros.</titulo>
+</encabezado>
+<libros>
 <%
    response.setStatus(200);
     String nombreArchivo = "libros.xml";
@@ -37,9 +37,9 @@
       Statement st = conexion.createStatement();
       ResultSet rs = st.executeQuery(sentencia);
       // Ponemos los resultados en un table de html
-      out.println("<table>");
+      out.println("<tabla>");
 %>
-<tr><td>Num.</td><td>ISBN</td><td>Titulo</td><td>Autor</td><td>Editorial</td><td>A�o Publicaci�n</td></tr>
+<cabecera><numeros>Num.</numeros><isbns>ISBN</isbns><titulos>Titulo</titulos><autores>Autor</autores><editoriales>Editorial</editoriales><anios>A�o Publicaci�n</anios></cabecera>
 <%
    int i=1;
    while (rs.next())
@@ -50,21 +50,21 @@
          editorial=rs.getString("editorial");
          anio=rs.getString("anio");
 %>
-<tr>
-   <td> <%=i%> </td>
-   <td><%=isbn%></td>
-   <td><%=titulo%></td>
-   <td><%=autor%></td>
-   <td><%=editorial%></td>
-   <td><%=anio%></td>
-</tr>
+<libro>
+   <numero> <%=i%> </numero>
+   <isbn><%=isbn%></isbn>
+   <titulo><%=titulo%></titulo>
+   <autor><%=autor%></autor>
+   <editorial><%=editorial%></editorial>
+   <anio><%=anio%></anio>
+</libro>
 <%
          i++;
       }
-   out.println("</table>");
+   out.println("</tabla>");
    // cierre de la conexion
    conexion.close();
    }
 %>
-</body>
-</html>
+</libros>
+</biblioteca>
