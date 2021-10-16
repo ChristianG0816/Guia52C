@@ -134,11 +134,12 @@ String path = context.getRealPath("/data");
 Connection conexion = getConnection(path);
    if (!conexion.isClosed()){
       String isbn ="", titulo ="", autor= "",editorial= "",anio= "", site= ""+request.getRequestURL(), b="", sentencia="";
+      //Ejercicio 02
       if(va==null){
-      b = " order by titulo asc";
+      b = " order by titulo desc";
       }
       else{
-      b = " order by titulo desc";
+      b = " order by titulo asc";
       }
       if(varBuscar != null){
         sentencia = "SELECT * FROM libros where titulo = " + "'" + varTitulo + "'" +" OR autor = "  + "'" + varAutor + "'" + b;
