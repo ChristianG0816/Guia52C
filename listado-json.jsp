@@ -43,14 +43,14 @@
             editorial=rs.getString("editorial");
             anio=rs.getString("anio");
             %>
-            
-    "libro": {
-        "numero": "<%=i%>", 
-        "isbn": <%=isbn%>,
-        "titulo": "<%=titulo%>",
-        "autor": "<%=autor%>",
-        "editorial": "<%=editorial%>",
-        "anio": <%=anio%>,
+    "<%=i%>" : {
+        "libro": {
+            "isbn": "<%=isbn%>",
+            "titulo": "<%=titulo%>",
+            "autor": "<%=autor%>",
+            "editorial": "<%=editorial%>",
+            "anio": "<%=anio%>"
+        }
     },
             
             <%
