@@ -15,7 +15,7 @@ String ls_action = request.getParameter("Action");
 String ls_result = "Base de datos actualizada...";
 String ls_query = "";
 ServletContext context = request.getServletContext();
-String path = context.getRealPath("/data");
+String path = context.getRealPath("/Parte3/data");
 String filePath= path+"\\datos.mdb";
 String ls_dburl = "jdbc:odbc:Driver={MicroSoft Access Driver (*.mdb)};DBQ="+filePath;
 String ls_usuario = "";
