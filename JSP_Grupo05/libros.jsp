@@ -120,7 +120,7 @@ System.out.println("Error: " + e);
       </tr>
       <tr>
       <td><label>Anio de publicacion</label><input type="date" name="anio" class="inputDate" value="<%=varanio%>" min="1000-01-01" max="2021-12-31"/></td>
-      <td><a href="listado-html.jsp" download="libros.html" class="btn btn-outline-dark">Listado txt</a></td>
+      <td><a href="listado-html.jsp" download="libros.html" class="btn btn-outline-dark">Listado HTML</a></td>
       </tr>
       <!-- FIN EJERCICIO 7 -->
       <tr><td class="rBtn"><label>Action </label>
