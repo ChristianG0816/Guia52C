@@ -116,7 +116,7 @@ System.out.println("Error: " + e);
               conexion1.close();
             }
           %></td>
-          <td><a href="listado-json.jsp" download="libros.json" class="btn btn-outline-dark">Listado txt</a></td>
+          <td><a href="listado-json.jsp" download="libros.json" class="btn btn-outline-dark">Listado JSON</a></td>
       </tr>
       <tr>
       <td><label>Anio de publicacion</label><input type="date" name="anio" class="inputDate" value="<%=varanio%>" min="1000-01-01" max="2021-12-31"/></td>
