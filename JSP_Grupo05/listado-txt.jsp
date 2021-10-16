@@ -20,7 +20,7 @@ System.out.println("Error: " + e);
 }
 %><%
 ServletContext context = request.getServletContext();
-String path = context.getRealPath("/data");
+String path = context.getRealPath("/JSP_Grupo05/data");
 Connection conexion = getConnection(path);
    if (!conexion.isClosed()){
       String isbn ="", titulo ="", autor= "",editorial= "",anio= "", sentencia="";
@@ -35,12 +35,12 @@ Connection conexion = getConnection(path);
          editorial=rs.getString("editorial");
          anio=rs.getString("anio");
          
-         out.println("Número: "+i);
+         out.println("Nï¿½mero: "+i);
          out.println("ISBN: "+isbn);
          out.println("Titulo: "+titulo);
          out.println("Actor: "+autor);
          out.println("Editorial: "+editorial);
-         out.println("Año de Publicación: : "+anio+"\n");
+         out.println("Aï¿½o de Publicaciï¿½n: : "+anio+"\n");
 
          i++;
       }

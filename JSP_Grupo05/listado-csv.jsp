@@ -20,14 +20,14 @@ public Connection getConnection(String path) throws SQLException {
 }
 %><%
 ServletContext context = request.getServletContext();
-String path = context.getRealPath("/data");
+String path = context.getRealPath("/JSP_Grupo05/data");
 Connection conexion = getConnection(path);
     if (!conexion.isClosed()){
         String isbn ="", titulo ="", autor= "",editorial= "",anio= "", sentencia="";
         sentencia = "select * from libros";
         Statement st = conexion.createStatement();
         ResultSet rs = st.executeQuery(sentencia);
-        out.println("Num.;ISBN;Título;Autor;Editorial;Año Publicación");
+        out.println("Num.;ISBN;Tï¿½tulo;Autor;Editorial;Aï¿½o Publicaciï¿½n");
         int i=1;
         while (rs.next())
         { 
