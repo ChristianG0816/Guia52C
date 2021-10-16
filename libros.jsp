@@ -189,4 +189,5 @@ Connection conexion = getConnection(path);
   <a href="listado-xml.jsp" download="libros.xml">Descargar Listado XML</a>
   <a href="listado-csv.jsp" download="libros.csv">Descargar Listado CSV</a>
   <a href="listado-txt.jsp" download="libros.txt">Descargar Listado txt</a>
+  <a href="listado-json.jsp" download="libros.json">Descargar Listado json</a>
  </body>
