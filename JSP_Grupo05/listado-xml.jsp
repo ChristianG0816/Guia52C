@@ -1,4 +1,5 @@
-<%@page import="java.util.*,java.sql.*,net.ucanaccess.jdbc.*" contentType="application/xml" pageEncoding="utf-8"%><biblioteca>
+<%@page import="java.util.*,java.sql.*,net.ucanaccess.jdbc.*" contentType="application/xml" pageEncoding="utf-8"%> <?xml-stylesheet type="text/css" href="css/style.css" ?>
+    <biblioteca>
     <encabezado>
         <tituloP>Mantenimiento de Libros.</tituloP>
     </encabezado>
