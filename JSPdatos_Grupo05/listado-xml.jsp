@@ -26,7 +26,7 @@
     }
 %><%
    ServletContext context = request.getServletContext();
-   String path = context.getRealPath("/JSP_Grupo05/data");
+   String path = context.getRealPath("/JSPdatos_Grupo05/data");
    Connection conexion = getConnection(path);
    if (!conexion.isClosed()){
       String isbn ="", titulo ="", autor= "", editorial= "", anio= "", sentencia="";

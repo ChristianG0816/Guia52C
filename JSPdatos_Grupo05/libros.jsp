@@ -89,7 +89,7 @@ System.out.println("Error: " + e);
       <tr><td><label>Editorial</label><select type="text" name="editorial"/>
           <%
           ServletContext context1 = request.getServletContext();
-          String path1 = context1.getRealPath("/JSP_Grupo05/data");
+          String path1 = context1.getRealPath("/JSPdatos_Grupo05/data");
           Connection conexion1 = getConnection(path1);
             if (!conexion1.isClosed()){
               String a="";
@@ -153,7 +153,7 @@ System.out.println("Error: " + e);
   <br>
   <%
   ServletContext context = request.getServletContext();
-  String path = context.getRealPath("/JSP_Grupo05/data");
+  String path = context.getRealPath("/JSPdatos_Grupo05/data");
   System.out.println(path);
   Connection conexion = getConnection(path);
     if (!conexion.isClosed()){
