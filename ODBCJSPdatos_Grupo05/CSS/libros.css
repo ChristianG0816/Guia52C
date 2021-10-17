@@ -1,0 +1,122 @@
+/* estilo.css GRUPO 05*/
+*{
+    padding: none;
+    margin: none;
+}
+body section{
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    display:flex;
+    padding: 2%;
+    flex-direction:column;
+    flex-wrap: wrap;
+    font-family:Arial, Helvetica, sans-serif;
+}
+h1{
+    text-align: center;
+    padding: 20px;
+    background-color: #003156;
+    font-weight: bold;
+    color: burlywood;
+}
+body #mensaje{
+    font-size: 20px;
+    justify-content: left;
+}
+body #mensaje .mensaje{
+    font-weight: bold;
+}
+body #mensaje #enlace{
+    font-size: 20px;
+    height: auto;
+    width: 130px;
+    font-size: 13px;
+    text-decoration: none;
+}
+/*Palabra titulo del encabezado de tabla*/
+.table-striped .table-dark .trEncabezado td a #titu{
+    text-decoration: none;
+}
+/*Formulario Actualizar*/
+body section .formActualizar{
+    background-color: rgba(95, 95, 95, 0);
+    border-radius: 30px;
+    box-shadow: 2px 2px 2px 3px rgba(2, 14, 24, 0.719);
+    padding: 2em;
+}
+body section .formActualizar .tCampos tbody tr td label{
+    padding-right: 15px;
+    text-align: right;
+}
+body section .formActualizar .tCampos tbody tr td .eDescargas{
+    padding-right: 30px;
+}
+body section .formActualizar .tCampos tbody tr td{
+    text-align: right;
+    padding-right: 15px;
+    padding-top: 12px;
+}
+body section .formActualizar .tCampos tbody tr td select{
+    width: 410px;
+}
+body section .formActualizar .tCampos tbody tr td .inputDate{
+    width: 410px;
+}
+body section .formActualizar .tCampos tbody tr td input{
+    width: 410px;
+    height: 14xp;
+}
+body section .formActualizar .tCampos tbody tr .rBtn{
+    padding-right: 55px;
+}
+body section .formActualizar .tCampos tbody tr .radio{
+    width: 35px;
+    margin-left: 25px;
+}
+body section .formActualizar .tCampos tbody tr td .btn{
+    height: 12xp;
+    width: 125px;
+    font-size: 13px;
+}
+/*Formulario Buscar*/
+body section section .formBuscar{
+    align-content: center;
+}
+body section .formBuscar .tBbusqueda tr td{
+    padding-right: 38px;
+}
+body section .formBuscar label{
+    padding-right: 15px;
+    text-align: right;
+}
+body section .formBuscar .btn{
+    height: 12xp;
+    width: 125px;
+    font-size: 13px;
+}
+body section .formBuscar .table .trEncabezado{
+    text-align: center;
+}
+body section .formBuscar .table tr .tdNum{
+    size: 5px;
+    text-align: center;
+}
+body section .formBuscar .table tr .tdIsbn{
+    size: 13px;
+}
+body section .formBuscar .table tr .tdTitulo{
+    size: 60px;
+}
+body section .formBuscar .table tr .tdAutor{
+    size: 60px;
+}
+body section .formBuscar .table tr .tdEditorial{
+    size: 60px;
+}
+body section .formBuscar .table tr .tdAnio{
+    size: 15px;
+}
+body section .formBuscar .table tr .tdAccion{
+    size: 15px;
+}
